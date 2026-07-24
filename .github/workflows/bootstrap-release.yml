@@ -1,0 +1,52 @@
+name: Bootstrap MMLC Runtime v1.0
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bootstrap-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify release archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d bootstrapmin
+          count=$(find bootstrapmin -maxdepth 1 -type f -name 'chunk_*' | wc -l)
+          test "$count" -ge 1
+          cat $(find bootstrapmin -maxdepth 1 -type f -name 'chunk_*' | sort) | base64 --decode > /tmp/mmlc-runtime-v1.0.tar.xz
+          xz --test /tmp/mmlc-runtime-v1.0.tar.xz
+          mkdir -p /tmp/mmlc-release
+          tar -xJf /tmp/mmlc-runtime-v1.0.tar.xz -C /tmp/mmlc-release
+          release_root=$(find /tmp/mmlc-release -mindepth 1 -maxdepth 1 -type d | head -n 1)
+          test -n "$release_root"
+          test -f "$release_root/README.md"
+          test -f "$release_root/pyproject.toml"
+          test -d "$release_root/mmlc"
+
+      - name: Replace bootstrap tree with public v1.0 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          release_root=$(find /tmp/mmlc-release -mindepth 1 -maxdepth 1 -type d | head -n 1)
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a "$release_root"/. ./
+          rm -rf bootstrap bootstrap16 bootstrapxz bootstrapmin
+          rm -f .github/workflows/bootstrap-release.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Release MMLC Runtime v1.0.0'
+          git push origin HEAD:main

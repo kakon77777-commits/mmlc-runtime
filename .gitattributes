@@ -1,0 +1,3 @@
+# Keep the tree byte-identical to the verified v1.0 release package, so a
+# git checkout matches the artifact the release report was written against.
+* -text

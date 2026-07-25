@@ -1,0 +1,26 @@
+format: MMLF
+version: "0.1"
+ledger_id: demo-four-ops
+objects:
+  - id: number-3
+    type: real
+    value: 3
+axes:
+  horizontal: {semantic: parallel_branch}
+  vertical: {semantic: computation_layer}
+branches:
+  - {id: b-add, source_id: number-3, base: 3, operator: add, operand: 2, expected_result: 5, region: arithmetic}
+  - {id: b-sub, source_id: number-3, base: 3, operator: subtract, operand: 2, expected_result: 1, region: arithmetic}
+  - {id: b-mul, source_id: number-3, base: 3, operator: multiply, operand: 2, expected_result: 6, region: arithmetic}
+  - {id: b-div, source_id: number-3, base: 3, operator: divide, operand: 2, expected_result: "frac:3/2", region: arithmetic}
+layout:
+  - [b-add, b-sub, b-mul, b-div]
+traversals:
+  display: [left_to_right, right_to_left]
+  execute: dependency_topological
+  audit: [bottom_to_top, reverse_dependency]
+audit_policy:
+  local_required: true
+  signed_global_cancellation_allowed: false
+  numeric_tolerance: 1.0e-12
+boundary_events: []

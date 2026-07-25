@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmlc-runtime"
+version = "1.0.0"
+description = "Auditable multidirectional matrix-ledger runtime for deterministic computation, constraints, temporal dynamics, counterfactuals, uncertainty, and finite decision analysis"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [
+  {name = "Neo.K"},
+]
+maintainers = [
+  {name = "EveMissLab"},
+]
+keywords = [
+  "matrix computation",
+  "ledger",
+  "audit",
+  "counterfactual",
+  "causal inference",
+  "symbolic computation",
+  "decision analysis",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+  "PyYAML>=6.0",
+  "jsonschema>=4.20",
+  "sympy>=1.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://github.com/kakon77777-commits/mmlc-runtime"
+Repository = "https://github.com/kakon77777-commits/mmlc-runtime"
+Issues = "https://github.com/kakon77777-commits/mmlc-runtime/issues"
+Documentation = "https://github.com/kakon77777-commits/mmlc-runtime/tree/main/docs"
+
+[project.scripts]
+mmlc = "mmlc.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mmlc*"]
+
+[tool.setuptools.package-data]
+"mmlc.schemas" = ["*.json"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

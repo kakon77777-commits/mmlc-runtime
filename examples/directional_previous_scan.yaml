@@ -1,0 +1,32 @@
+format: MMLF
+version: "0.3"
+ledger_id: directional-previous-scan
+branches:
+  - id: n1
+    base: {matrix_ref: previous, field: result, default: 0}
+    operator: subtract
+    operand: 1
+    region: scan
+  - id: n2
+    base: {matrix_ref: previous, field: result, default: 0}
+    operator: subtract
+    operand: 2
+    region: scan
+  - id: n3
+    base: {matrix_ref: previous, field: result, default: 0}
+    operator: subtract
+    operand: 3
+    region: scan
+  - id: n4
+    base: {matrix_ref: previous, field: result, default: 0}
+    operator: subtract
+    operand: 4
+    region: scan
+layout:
+  - [n1, n2, n3, n4]
+traversals:
+  display: [left_to_right, right_to_left]
+  execute: left_to_right
+audit_policy:
+  local_required: true
+  signed_global_cancellation_allowed: false

@@ -1,0 +1,43 @@
+format: MMLF
+version: "0.7"
+ledger_id: fdcs-soft-interventions
+branches:
+  - id: seed
+    base: 2
+    operator: identity
+    expected_result: 2
+  - id: root
+    base: {ref: seed, field: result}
+    operator: add
+    operand: 1
+    expected_result: 3
+  - id: mid
+    base: {ref: root, field: result}
+    operator: multiply
+    operand: 2
+    expected_result: 6
+  - id: leaf
+    base: {ref: mid, field: result}
+    operator: add
+    operand: 4
+    expected_result: 10
+layout:
+  - [seed, root, mid, leaf]
+fdcs:
+  enabled: true
+  base_context: observed
+  parallel_workers: 2
+  contexts:
+    - id: soften-root
+      interventions:
+        - id: affine-root
+          kind: soft_affine
+          target_tx_id: root
+          scale: 2
+          shift: 1
+    - id: shift-mid
+      interventions:
+        - id: shift-mid-five
+          kind: soft_shift
+          target_tx_id: mid
+          shift: 5

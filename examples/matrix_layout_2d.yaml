@@ -1,0 +1,19 @@
+format: MMLF
+version: "0.3"
+ledger_id: matrix-layout-2d
+branches:
+  - {id: a, base: 1, operator: identity, region: top}
+  - {id: b, base: 2, operator: identity, region: top}
+  - {id: c, base: 3, operator: identity, region: top}
+  - {id: d, base: 4, operator: identity, region: bottom}
+  - {id: e, base: 5, operator: identity, region: bottom}
+  - {id: f, base: 6, operator: identity, region: bottom}
+layout:
+  - [a, b, c]
+  - [d, e, f]
+traversals:
+  display: [left_to_right, right_to_left, top_to_bottom, bottom_to_top]
+  execute: dependency_topological
+audit_policy:
+  local_required: true
+  signed_global_cancellation_allowed: false

@@ -1,0 +1,10 @@
+format: MMLF
+version: "0.1"
+ledger_id: tampered-multiply
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - {id: b-add, source_id: number-3, base: 3, operator: add, operand: 2, expected_result: 5}
+  - {id: b-mul, source_id: number-3, base: 3, operator: multiply, operand: 2, expected_result: 7}
+audit_policy:
+  numeric_tolerance: 1.0e-12

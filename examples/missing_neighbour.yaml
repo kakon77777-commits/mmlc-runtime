@@ -1,0 +1,11 @@
+format: MMLF
+version: "0.3"
+ledger_id: missing-neighbour
+branches:
+  - id: a
+    base: {matrix_ref: left, field: result}
+    operator: identity
+layout:
+  - [a]
+traversals:
+  execute: left_to_right

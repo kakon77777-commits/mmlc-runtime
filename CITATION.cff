@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "MMLC Runtime: Multidirectional Matrix Ledger Computation"
+message: "Please cite this software using the metadata in this file."
+type: software
+authors:
+  - family-names: "K"
+    given-names: "Neo"
+version: 1.0.0
+date-released: 2026-07-23
+license: Apache-2.0
+repository-code: "https://github.com/kakon77777-commits/mmlc-runtime"
+url: "https://github.com/kakon77777-commits/mmlc-runtime"
+keywords:
+  - matrix ledger
+  - auditable computation
+  - counterfactual computation
+  - uncertainty propagation

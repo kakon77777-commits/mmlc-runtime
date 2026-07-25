@@ -1,0 +1,10 @@
+format: MMLF
+version: "0.1"
+ledger_id: symbolic-x-preview
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - {id: s-add, source_id: number-3, base: 3, operator: add, operand: "expr:x", expected_result: "expr:x + 3", region: symbolic}
+  - {id: s-sub, source_id: number-3, base: 3, operator: subtract, operand: "expr:x", expected_result: "expr:3 - x", region: symbolic}
+  - {id: s-mul, source_id: number-3, base: 3, operator: multiply, operand: "expr:x", expected_result: "expr:3*x", region: symbolic}
+  - {id: s-div, source_id: number-3, base: 3, operator: divide, operand: "expr:x", expected_result: "expr:3/x", region: symbolic}

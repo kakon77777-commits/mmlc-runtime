@@ -1,0 +1,410 @@
+{
+  "release_validation_format": "MMLC-RELEASE-VALIDATION v1",
+  "runtime_version": "1.0.0",
+  "runtime_info": {
+    "name": "mmlc-runtime",
+    "display_name": "MMLC Runtime — Multidirectional Matrix Ledger Computation",
+    "version": "1.0.0",
+    "runtime_api_version": "1",
+    "mmlf_stable_version": "1.0",
+    "supported_mmlf_versions": [
+      "0.1",
+      "0.2",
+      "0.3",
+      "0.4",
+      "0.5",
+      "0.6",
+      "0.7",
+      "0.8",
+      "0.9",
+      "1.0"
+    ],
+    "stable_cli_commands": [
+      "validate",
+      "run",
+      "verify-exchange",
+      "compare-representations",
+      "simulate-fdcs",
+      "compare-directions",
+      "migrate",
+      "benchmark",
+      "info"
+    ],
+    "stable_public_symbols": [
+      "Runtime",
+      "load_ledger",
+      "validate_file",
+      "execute_file",
+      "simulate_fdcs_file",
+      "migrate_file",
+      "runtime_info",
+      "verify_symbolic_numeric_exchange",
+      "compare_directions",
+      "compare_representations"
+    ],
+    "semantic_versioning": {
+      "patch": "bug fixes with no intended public API or MMLF semantic change",
+      "minor": "backward-compatible additions inside Runtime 1.x",
+      "major": "public API removal or MMLF semantic incompatibility"
+    }
+  },
+  "example_count": 40,
+  "migrated_example_count": 40,
+  "migration_validation_failures": 0,
+  "representative_equivalence_count": 12,
+  "representative_equivalence_failures": 0,
+  "migrations": [
+    {
+      "file": "all_equal_column.yaml",
+      "source_version": "0.4",
+      "target_version": "1.0",
+      "migration_hash": "ef4ed3607ee0ff7de0e6949f3b617f1eb5b623c1fb9e644cd16933d73a372205"
+    },
+    {
+      "file": "ambiguous_row_repair.yaml",
+      "source_version": "0.4",
+      "target_version": "1.0",
+      "migration_hash": "f3e94106b93d1e3b646bd8405931f4068bb8f9d0b71584011c091159073ef0aa"
+    },
+    {
+      "file": "anti_cancellation.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "2856c12b219a8f3a41fd16880cc995288ceeeefa1459b828e7adc2cf7d4fffb7"
+    },
+    {
+      "file": "constraint_clean.yaml",
+      "source_version": "0.4",
+      "target_version": "1.0",
+      "migration_hash": "151ecf113645ebdcfdee36eae4cce06113a9e046fe39243abdba5d671e18efab"
+    },
+    {
+      "file": "cross_axis_cancellation.yaml",
+      "source_version": "0.4",
+      "target_version": "1.0",
+      "migration_hash": "b25bb67a88ba947fdbe46d7e78c1f973d55f5486035b2d832523cdd8de3b0e6f"
+    },
+    {
+      "file": "cross_axis_single_error.yaml",
+      "source_version": "0.4",
+      "target_version": "1.0",
+      "migration_hash": "8b52f62ce03f0831941d511c3356946ea412955408567494b2904e1a7962d3b5"
+    },
+    {
+      "file": "dependency_chain.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "bfac23e06c8d12d56220d9994dac5d156cec440e1423bee6392dc11240ad3cb2"
+    },
+    {
+      "file": "dependency_cycle.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "48baf9817f88ab9fb75195bed4e0627e10b1c296c74a49def4a1950c1c6b42c7"
+    },
+    {
+      "file": "directional_previous_scan.yaml",
+      "source_version": "0.3",
+      "target_version": "1.0",
+      "migration_hash": "38804b1bf39619c9b2d5f9468e91c96a3f12d27166c88f521ee9f53732a610ad"
+    },
+    {
+      "file": "division_by_zero.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "a33317a967529d8a86e7e034fe65ebf913dacb6111fc7ced8b6ebeceebfabba0"
+    },
+    {
+      "file": "fdcs_conflict_identifiability.yaml",
+      "source_version": "0.7",
+      "target_version": "1.0",
+      "migration_hash": "78cc613f7008135832c600edbe87ca2993407fe726fb732b150f49633ba7751d"
+    },
+    {
+      "file": "fdcs_continuous_correlated.yaml",
+      "source_version": "0.9",
+      "target_version": "1.0",
+      "migration_hash": "94dc1960f54d6e3a8787b29857494c933f2551cd51b3b7048e31b41658fc2599"
+    },
+    {
+      "file": "fdcs_cost_aware_observation.yaml",
+      "source_version": "0.9",
+      "target_version": "1.0",
+      "migration_hash": "db08b12d45752b5fc0ed12685e78d17e1566cdbe32c352ba1c595a44d99fe129"
+    },
+    {
+      "file": "fdcs_directional_fractal_weights.yaml",
+      "source_version": "0.6",
+      "target_version": "1.0",
+      "migration_hash": "cb482d257ff7860b3ff65151bdb89191fbab4e540282b1c82d96afdbb2961c17"
+    },
+    {
+      "file": "fdcs_fixed_point_interventions.yaml",
+      "source_version": "0.7",
+      "target_version": "1.0",
+      "migration_hash": "0f7a4e60354ca93deafc806afe7e8593f7021fe86d56afdf1fff3da5a694780f"
+    },
+    {
+      "file": "fdcs_intervention_branches.yaml",
+      "source_version": "0.6",
+      "target_version": "1.0",
+      "migration_hash": "12514b5d03461e4dfec94cc13f60e2550c2b464702080345e1c2e35445db8996"
+    },
+    {
+      "file": "fdcs_invalid_intervention.yaml",
+      "source_version": "0.6",
+      "target_version": "1.0",
+      "migration_hash": "49822a8bede9676abeec90699379a29627e7df926967265e7df74a0c32abb6cd"
+    },
+    {
+      "file": "fdcs_observation_impossible.yaml",
+      "source_version": "0.8",
+      "target_version": "1.0",
+      "migration_hash": "e74cf3b8b7b30f99b7453cb194015d5eefa3e2d2e0d87e9c3850669133cff973"
+    },
+    {
+      "file": "fdcs_observation_planning.yaml",
+      "source_version": "0.8",
+      "target_version": "1.0",
+      "migration_hash": "4174ad843ab6151cca029faa2f0136e3021f00685940dfcafb83dcf8f4a53cbb"
+    },
+    {
+      "file": "fdcs_probability_policy.yaml",
+      "source_version": "0.8",
+      "target_version": "1.0",
+      "migration_hash": "ad3cd11959755914ebbfca695d70367550353505fd4f967cf7c26a589891c1e7"
+    },
+    {
+      "file": "fdcs_sequential_information_value.yaml",
+      "source_version": "0.9",
+      "target_version": "1.0",
+      "migration_hash": "2e571040dff2ceded6b3d875c6dcc7f32f20b0d69a70b176190b527a9958519b"
+    },
+    {
+      "file": "fdcs_soft_interventions.yaml",
+      "source_version": "0.7",
+      "target_version": "1.0",
+      "migration_hash": "b5ab94a7444a266f47eedd81885aa6f5ff2e3528aee0337fbab96a15c9e7f399"
+    },
+    {
+      "file": "field_sensitive_taint.yaml",
+      "source_version": "0.2",
+      "target_version": "1.0",
+      "migration_hash": "cfa62db6868427f718fac0c1d3e7686ef35219358fe9224ec38d7ff35592a8e2"
+    },
+    {
+      "file": "fixed_point_convergent.yaml",
+      "source_version": "0.5",
+      "target_version": "1.0",
+      "migration_hash": "2ea716660dc41e10dfa97c012396c6f98732f886c68111ca28b113b7f15aaba6"
+    },
+    {
+      "file": "fixed_point_divergent.yaml",
+      "source_version": "0.5",
+      "target_version": "1.0",
+      "migration_hash": "16d3bf0209db00828f1a688045477971044dbc290d72b0cb28c2b4b7b1d095be"
+    },
+    {
+      "file": "four_operations.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "cdedcf835caf448d5a77922f5aca92e350171f36250cc03e1ccaed9c1abce041"
+    },
+    {
+      "file": "immutable_correction.yaml",
+      "source_version": "0.5",
+      "target_version": "1.0",
+      "migration_hash": "59a1a80d8cc80bd3100bdb8d5067e840d1917d9f4f921901acd125def119b808"
+    },
+    {
+      "file": "matrix_layout_2d.yaml",
+      "source_version": "0.3",
+      "target_version": "1.0",
+      "migration_hash": "14352ae64b9d684cfd2100f814ab47e5cf66bd15a759f4c66069640f85631cb0"
+    },
+    {
+      "file": "missing_neighbour.yaml",
+      "source_version": "0.3",
+      "target_version": "1.0",
+      "migration_hash": "cd8e3fc4e54f4d1956331f414e3c9d2d3cb78b95ad9aeec93fc14f6e5dc69312"
+    },
+    {
+      "file": "mmlf_v1_stable.yaml",
+      "source_version": "1.0",
+      "target_version": "1.0",
+      "migration_hash": "9fc87c90c7ec6d601c8978907bb18c90a13912dbbfb404f0795652e59a7c5674"
+    },
+    {
+      "file": "reordered_four_operations.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "3582da50255b4cd653c9131c6c2b033874a4180c4c2588a5b291cf45afb06a0a"
+    },
+    {
+      "file": "root_cause_chain.yaml",
+      "source_version": "0.2",
+      "target_version": "1.0",
+      "migration_hash": "35aaffdc888f538b4c0de37f263559b9cfd769f8e285fb4da42eda27516f7202"
+    },
+    {
+      "file": "root_cause_merge.yaml",
+      "source_version": "0.2",
+      "target_version": "1.0",
+      "migration_hash": "718ec4f73b289632434655764ab58d722f38aa26f5893e132c15f6484c2f0ca1"
+    },
+    {
+      "file": "sparse_layout.yaml",
+      "source_version": "0.3",
+      "target_version": "1.0",
+      "migration_hash": "09cf5cb14d342ef4c778f7b83a058a7b1a289b571a9575ce434808532f8cd620"
+    },
+    {
+      "file": "spatial_left_chain.yaml",
+      "source_version": "0.3",
+      "target_version": "1.0",
+      "migration_hash": "a5b37a9e20c42c18335a9a5acae93c3ec45d8005d8d1851734114fca61102720"
+    },
+    {
+      "file": "symbolic_exchange.yaml",
+      "source_version": "0.2",
+      "target_version": "1.0",
+      "migration_hash": "54f443184e9f45d4bf2ea9b991e43560f98aee1d4d2e8787c62c63d47bfd6928"
+    },
+    {
+      "file": "symbolic_x.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "a2f6e127cd31188ac29049670ff830d23e3bbd8707344d14bd6ee7121c43f8d7"
+    },
+    {
+      "file": "tampered_multiply.yaml",
+      "source_version": "0.1",
+      "target_version": "1.0",
+      "migration_hash": "fa55a09e05087111db5857e9ba01868d4d9ec28d65c7ee6250b407ee966f8a78"
+    },
+    {
+      "file": "temporal_default.yaml",
+      "source_version": "0.5",
+      "target_version": "1.0",
+      "migration_hash": "28b1a01296f77d53fcfd643000590aa684561d821aff463830c195f2d5917c3e"
+    },
+    {
+      "file": "temporal_lag_chain.yaml",
+      "source_version": "0.5",
+      "target_version": "1.0",
+      "migration_hash": "19b60ca3142ef51169c02fe9ed6ed40b2160afc235b3cc9922b9e251c51a02ac"
+    }
+  ],
+  "representative_equivalence": [
+    {
+      "file": "four_operations.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "e41692c0200f444c6f6f1cef208526b381af01c9fc9100940fa47221ea6d5566",
+      "target_snapshot_hash": "e41692c0200f444c6f6f1cef208526b381af01c9fc9100940fa47221ea6d5566"
+    },
+    {
+      "file": "symbolic_exchange.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "78c8a264449dd71d1feab238a448c7b60a2aca5421969b4bb5d59aaee7c3cee0",
+      "target_snapshot_hash": "78c8a264449dd71d1feab238a448c7b60a2aca5421969b4bb5d59aaee7c3cee0"
+    },
+    {
+      "file": "directional_previous_scan.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "a1437adf3b6e6d5623b1fbd0483c16d8f754622d84674b2fb431b824804b86e5",
+      "target_snapshot_hash": "a1437adf3b6e6d5623b1fbd0483c16d8f754622d84674b2fb431b824804b86e5"
+    },
+    {
+      "file": "cross_axis_single_error.yaml",
+      "source_outcome": "RESULT:FAIL",
+      "target_outcome": "RESULT:FAIL",
+      "equivalent": true,
+      "source_snapshot_hash": "8a013bc04725e01d2ebb86b18391c9c30dc7b35b6493891b1c78692d2ca1622d",
+      "target_snapshot_hash": "8a013bc04725e01d2ebb86b18391c9c30dc7b35b6493891b1c78692d2ca1622d"
+    },
+    {
+      "file": "temporal_lag_chain.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "e8d0e630d93bdc560d9333262125b846f10322f11446012bd619123813870773",
+      "target_snapshot_hash": "e8d0e630d93bdc560d9333262125b846f10322f11446012bd619123813870773"
+    },
+    {
+      "file": "fdcs_intervention_branches.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "ad6f5e92a54f1ea062e09bbcef888e00bab6900742c9dfcaf6498175efe3de81",
+      "target_snapshot_hash": "ad6f5e92a54f1ea062e09bbcef888e00bab6900742c9dfcaf6498175efe3de81"
+    },
+    {
+      "file": "fdcs_soft_interventions.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "034119e2157fc00ce10f99f3a80ba1b160490271180c3aaa6fa937ae852f491c",
+      "target_snapshot_hash": "034119e2157fc00ce10f99f3a80ba1b160490271180c3aaa6fa937ae852f491c"
+    },
+    {
+      "file": "fdcs_probability_policy.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "b56311e81bf1221a962aa68f38b2d721801cd638c70d2a5f4020dcb91ab63167",
+      "target_snapshot_hash": "b56311e81bf1221a962aa68f38b2d721801cd638c70d2a5f4020dcb91ab63167"
+    },
+    {
+      "file": "fdcs_continuous_correlated.yaml",
+      "source_outcome": "RESULT:PASS",
+      "target_outcome": "RESULT:PASS",
+      "equivalent": true,
+      "source_snapshot_hash": "df2b6cadba390b0494f19ff43390d95d113faba223f9902a453d9da1b56528d0",
+      "target_snapshot_hash": "df2b6cadba390b0494f19ff43390d95d113faba223f9902a453d9da1b56528d0"
+    },
+    {
+      "file": "division_by_zero.yaml",
+      "source_outcome": "RESULT:FAIL",
+      "target_outcome": "RESULT:FAIL",
+      "equivalent": true,
+      "source_snapshot_hash": "f63e29deac86ae2345b16db952086b540696f81b61a9e0e8eebf63964f98270c",
+      "target_snapshot_hash": "f63e29deac86ae2345b16db952086b540696f81b61a9e0e8eebf63964f98270c"
+    },
+    {
+      "file": "dependency_cycle.yaml",
+      "source_outcome": "ERROR:DependencyCycleError",
+      "target_outcome": "ERROR:DependencyCycleError",
+      "equivalent": true,
+      "source_snapshot_hash": null,
+      "target_snapshot_hash": null
+    },
+    {
+      "file": "fixed_point_divergent.yaml",
+      "source_outcome": "RESULT:FAIL",
+      "target_outcome": "RESULT:FAIL",
+      "equivalent": true,
+      "source_snapshot_hash": "3a7990f4f1e9cc0a1b00e878effa33cb6e3585700d773aeddcfac5e1acef92aa",
+      "target_snapshot_hash": "3a7990f4f1e9cc0a1b00e878effa33cb6e3585700d773aeddcfac5e1acef92aa"
+    }
+  ],
+  "native_v1": {
+    "ledger_id": "mmlf-v1-stable-demo",
+    "version": "1.0",
+    "transaction_count": 2,
+    "global_status": "PASS",
+    "semantic_hash": "99bc17589981d51461dbe77e5f0bbdb5f5e88bc041f4753a7386b0953cfb8f71"
+  },
+  "packaged_schema_count": 10,
+  "root_schema_count": 10,
+  "benchmark_hash": "4982fb03e149bd2b69db2acdc3f8d4e821eb64e37f18d9397672b6b1737ad9f7",
+  "benchmark_cases": 6,
+  "all_benchmark_hashes_identical": true,
+  "all_benchmark_audits_pass": true,
+  "release_hash": "957ab0255fe284bcb6310ccc11cefc07aa2722ff9a3098e1e7154f52af7738b1"
+}

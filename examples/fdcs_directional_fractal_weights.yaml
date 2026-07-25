@@ -1,0 +1,37 @@
+format: MMLF
+version: "0.6"
+ledger_id: fdcs-directional-fractal-weights
+branches:
+  - id: parent
+    series_id: P
+    time_index: 0
+    base: 2
+    operator: identity
+    expected_result: 2
+    context:
+      fractal_level: 0
+  - id: child
+    series_id: C
+    time_index: 2
+    base: {ref: parent, field: result}
+    operator: add
+    operand: 1
+    expected_result: 3
+    context:
+      fractal_level: 2
+      causal_weight: 2.0
+      causal_weight_forward: 1.5
+      causal_weight_reverse: 0.25
+layout:
+  - [parent, child]
+fdcs:
+  enabled: true
+  base_context: observed
+  decay_lambda: 0.5
+  fractal_decay_lambda: 0.8
+  context_modulation: 1.2
+  direction_weights: {forward: 9.0, reverse: 9.0}
+  contexts:
+    - id: amplified
+      modulation: 2.0
+      interventions: []

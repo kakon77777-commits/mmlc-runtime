@@ -1,0 +1,33 @@
+format: MMLF
+version: "0.2"
+ledger_id: root-cause-chain-e2
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - id: origin
+    source_id: number-3
+    base: 3
+    operator: add
+    operand: 2
+    expected_result: 6
+    region: upstream
+  - id: derived-1
+    base: {ref: origin, field: audited_result}
+    operator: multiply
+    operand: 3
+    expected_result: 18
+    region: downstream
+  - id: derived-2
+    base: {ref: derived-1, field: audited_result}
+    operator: subtract
+    operand: 4
+    expected_result: 14
+    region: downstream
+  - id: healthy-side
+    base: 10
+    operator: subtract
+    operand: 1
+    expected_result: 9
+    region: independent
+layout:
+  - [origin, derived-1, derived-2, healthy-side]

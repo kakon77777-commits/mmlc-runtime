@@ -1,0 +1,21 @@
+format: MMLF
+version: "0.2"
+ledger_id: field-sensitive-taint-e2
+branches:
+  - id: origin
+    base: 3
+    operator: add
+    operand: 2
+    expected_result: 6
+  - id: computed-channel
+    base: {ref: origin, field: result}
+    operator: add
+    operand: 1
+    expected_result: 6
+  - id: declared-channel
+    base: {ref: origin, field: audited_result}
+    operator: add
+    operand: 1
+    expected_result: 7
+layout:
+  - [origin, computed-channel, declared-channel]

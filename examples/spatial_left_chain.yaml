@@ -1,0 +1,35 @@
+format: MMLF
+version: "0.3"
+ledger_id: spatial-left-chain
+branches:
+  - {id: a, base: 1, operator: identity, region: row-1}
+  - id: b
+    base: {matrix_ref: left, field: result}
+    operator: add
+    operand: 2
+    region: row-1
+  - id: c
+    base: {matrix_ref: left, field: result}
+    operator: add
+    operand: 3
+    region: row-1
+  - {id: d, base: 10, operator: identity, region: row-2}
+  - id: e
+    base: {matrix_ref: left, field: result}
+    operator: add
+    operand: 20
+    region: row-2
+  - id: f
+    base: {matrix_ref: left, field: result}
+    operator: add
+    operand: 30
+    region: row-2
+layout:
+  - [a, b, c]
+  - [d, e, f]
+traversals:
+  display: [left_to_right, right_to_left, top_to_bottom, bottom_to_top]
+  execute: dependency_topological
+audit_policy:
+  local_required: true
+  signed_global_cancellation_allowed: false

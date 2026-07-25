@@ -1,0 +1,38 @@
+format: MMLF
+version: "0.9"
+ledger_id: fdcs-cost-aware-observation
+branches:
+  - {id: x, base: 0, operator: identity, expected_result: 0}
+  - {id: y, base: 0, operator: identity, expected_result: 0}
+  - {id: z, base: 0, operator: identity, expected_result: 0}
+layout:
+  - [x, y, z]
+fdcs:
+  enabled: true
+  base_context: baseline
+  observed_transactions: []
+  contexts:
+    - id: state-1
+      interventions:
+        - {id: s1x, kind: do_set, target_tx_id: x, value: 0}
+        - {id: s1y, kind: do_set, target_tx_id: y, value: 1}
+        - {id: s1z, kind: do_set, target_tx_id: z, value: 1}
+    - id: state-2
+      interventions:
+        - {id: s2x, kind: do_set, target_tx_id: x, value: 1}
+        - {id: s2y, kind: do_set, target_tx_id: y, value: 0}
+        - {id: s2z, kind: do_set, target_tx_id: z, value: 2}
+    - id: state-3
+      interventions:
+        - {id: s3x, kind: do_set, target_tx_id: x, value: 1}
+        - {id: s3y, kind: do_set, target_tx_id: y, value: 1}
+        - {id: s3z, kind: do_set, target_tx_id: z, value: 3}
+  observation_planning:
+    enabled: true
+    candidate_transactions: [x, y, z]
+    max_additional_observations: 2
+    max_solutions: 8
+    observation_costs:
+      x: 0.2
+      y: 0.2
+      z: 1.0

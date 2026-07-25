@@ -1,0 +1,14 @@
+format: MMLF
+version: "0.1"
+ledger_id: demo-four-ops
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - {id: b-add, source_id: number-3, base: 3, operator: add, operand: 2, expected_result: 5, region: arithmetic}
+  - {id: b-sub, source_id: number-3, base: 3, operator: subtract, operand: 2, expected_result: 1, region: arithmetic}
+  - {id: b-mul, source_id: number-3, base: 3, operator: multiply, operand: 2, expected_result: 6, region: arithmetic}
+  - {id: b-div, source_id: number-3, base: 3, operator: divide, operand: 2, expected_result: "frac:3/2", region: arithmetic}
+layout:
+  - [b-div, b-mul, b-sub, b-add]
+audit_policy:
+  numeric_tolerance: 1.0e-12

@@ -1,0 +1,43 @@
+format: MMLF
+version: "0.5"
+ledger_id: temporal-lag-chain
+branches:
+  - id: x-t0
+    series_id: X
+    time_index: 0
+    base: 1
+    operator: identity
+    expected_result: 1
+  - id: x-t1
+    series_id: X
+    time_index: 1
+    base: {temporal_ref: X, lag: 1, field: result}
+    operator: add
+    operand: 2
+    expected_result: 3
+  - id: x-t2
+    series_id: X
+    time_index: 2
+    base: {temporal_ref: X, lag: 1, field: result}
+    operator: add
+    operand: 2
+    expected_result: 5
+  - id: y-t2
+    series_id: Y
+    time_index: 2
+    base: {temporal_ref: X, lag: 2, field: result}
+    operator: multiply
+    operand: 10
+    expected_result: 10
+layout:
+  - [x-t0, x-t1, x-t2, y-t2]
+fdcs:
+  enabled: true
+  context: temporal-test
+  decay_lambda: 0.8
+  context_modulation: 1.0
+  interventions:
+    - target: x-t1
+      value: 100
+traversals:
+  execute: dependency_topological

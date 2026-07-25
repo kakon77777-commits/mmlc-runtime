@@ -1,0 +1,33 @@
+format: MMLF
+version: "1.0"
+ledger_id: mmlf-v1-stable-demo
+metadata:
+  title: Stable MMLF 1.0 arithmetic demo
+  authors: [Neo.K]
+  license: Apache-2.0
+objects:
+  - id: source-three
+    type: real
+    value: 3
+branches:
+  - id: add
+    source_id: source-three
+    base: 3
+    operator: add
+    operand: 2
+    expected_result: 5
+  - id: multiply
+    source_id: source-three
+    base: 3
+    operator: multiply
+    operand: 2
+    expected_result: 6
+layout:
+  - [add, multiply]
+traversals:
+  display: [left_to_right, right_to_left]
+  execute: dependency_topological
+audit_policy:
+  local_required: true
+  signed_global_cancellation_allowed: false
+  numeric_tolerance: 1.0e-12

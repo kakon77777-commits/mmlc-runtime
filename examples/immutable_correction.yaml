@@ -1,0 +1,24 @@
+format: MMLF
+version: "0.5"
+ledger_id: immutable-correction
+branches:
+  - id: multiply-claim
+    base: 3
+    operator: multiply
+    operand: 2
+    expected_result: 7
+layout:
+  - [multiply-claim]
+corrections:
+  - id: correction-001
+    target_tx_id: multiply-claim
+    field: declared_result
+    mode: delta
+    value: 1
+    reason: first reviewer proposed 8
+  - id: correction-002
+    target_tx_id: multiply-claim
+    field: declared_result
+    mode: replace
+    value: 6
+    reason: final verified correction

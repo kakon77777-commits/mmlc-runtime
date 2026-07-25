@@ -1,0 +1,25 @@
+format: MMLF
+version: "0.5"
+ledger_id: fixed-point-convergent
+branches:
+  - id: x
+    base: {ref: y, field: result}
+    operator: affine
+    operand: 1
+    context: {scale: 0.5}
+    expected_result: 2
+  - id: y
+    base: {ref: x, field: result}
+    operator: affine
+    operand: 1
+    context: {scale: 0.5}
+    expected_result: 2
+layout:
+  - [x, y]
+fixed_point_groups:
+  - id: xy-equilibrium
+    members: [x, y]
+    method: jacobi
+    tolerance: 1.0e-13
+    max_iterations: 200
+    initial_values: {x: 0, y: 0}

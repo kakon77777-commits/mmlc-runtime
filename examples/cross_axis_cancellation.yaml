@@ -1,0 +1,40 @@
+format: MMLF
+version: "0.4"
+ledger_id: cross-axis-cancellation
+branches:
+  - {id: r0c0, base: 3, operator: identity}
+  - {id: r0c1, base: 2, operator: identity}
+  - {id: r0c2, base: 3, operator: identity}
+  - {id: r0c3, base: 2, operator: identity}
+  - {id: r1c0, base: 5, operator: identity}
+  - {id: r1c1, base: 6, operator: identity}
+  - {id: r1c2, base: 7, operator: identity}
+  - {id: r1c3, base: 8, operator: identity}
+  - {id: r2c0, base: 9, operator: identity}
+  - {id: r2c1, base: 10, operator: identity}
+  - {id: r2c2, base: 11, operator: identity}
+  - {id: r2c3, base: 12, operator: identity}
+  - {id: r3c0, base: 13, operator: identity}
+  - {id: r3c1, base: 14, operator: identity}
+  - {id: r3c2, base: 15, operator: identity}
+  - {id: r3c3, base: 16, operator: identity}
+layout:
+  - [r0c0, r0c1, r0c2, r0c3]
+  - [r1c0, r1c1, r1c2, r1c3]
+  - [r2c0, r2c1, r2c2, r2c3]
+  - [r3c0, r3c1, r3c2, r3c3]
+constraints:
+  - {id: row-0, kind: sum_equals, target: 10, scope: {type: row, index: 0}}
+  - {id: row-1, kind: sum_equals, target: 26, scope: {type: row, index: 1}}
+  - {id: row-2, kind: sum_equals, target: 42, scope: {type: row, index: 2}}
+  - {id: row-3, kind: sum_equals, target: 58, scope: {type: row, index: 3}}
+  - {id: column-0, kind: sum_equals, target: 28, scope: {type: column, index: 0}}
+  - {id: column-1, kind: sum_equals, target: 32, scope: {type: column, index: 1}}
+  - {id: column-2, kind: sum_equals, target: 36, scope: {type: column, index: 2}}
+  - {id: column-3, kind: sum_equals, target: 40, scope: {type: column, index: 3}}
+  - {id: block-tl, kind: sum_equals, target: 14, scope: {type: block, row_start: 0, row_end: 2, column_start: 0, column_end: 2}}
+  - {id: block-tr, kind: sum_equals, target: 22, scope: {type: block, row_start: 0, row_end: 2, column_start: 2, column_end: 4}}
+  - {id: block-bl, kind: sum_equals, target: 46, scope: {type: block, row_start: 2, row_end: 4, column_start: 0, column_end: 2}}
+  - {id: block-br, kind: sum_equals, target: 54, scope: {type: block, row_start: 2, row_end: 4, column_start: 2, column_end: 4}}
+traversals: {execute: dependency_topological}
+audit_policy: {local_required: true, signed_global_cancellation_allowed: false}

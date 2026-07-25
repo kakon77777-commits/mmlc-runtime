@@ -1,0 +1,12 @@
+format: MMLF
+version: "0.1"
+ledger_id: dependency-cycle
+branches:
+  - id: c1
+    base: {ref: c2}
+    operator: add
+    operand: 1
+  - id: c2
+    base: {ref: c1}
+    operator: add
+    operand: 1

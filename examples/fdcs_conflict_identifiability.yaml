@@ -1,0 +1,60 @@
+format: MMLF
+version: "0.7"
+ledger_id: fdcs-conflict-identifiability
+branches:
+  - id: seed
+    base: 2
+    operator: identity
+    expected_result: 2
+  - id: root
+    base: {ref: seed, field: result}
+    operator: add
+    operand: 1
+    expected_result: 3
+  - id: mid
+    base: {ref: root, field: result}
+    operator: multiply
+    operand: 2
+    expected_result: 6
+  - id: leaf
+    base: {ref: mid, field: result}
+    operator: add
+    operand: 4
+    expected_result: 10
+layout:
+  - [seed, root, mid, leaf]
+fdcs:
+  enabled: true
+  base_context: observed
+  observed_transactions: [leaf]
+  parallel_workers: 3
+  contexts:
+    - id: hard-root-four
+      interventions:
+        - id: set-root-four
+          kind: do_set
+          target_tx_id: root
+          value: 4
+    - id: soft-root-plus-one
+      interventions:
+        - id: shift-root-one
+          kind: soft_shift
+          target_tx_id: root
+          shift: 1
+    - id: invisible-identity
+      interventions:
+        - id: identity-soft-leaf
+          kind: soft_affine
+          target_tx_id: leaf
+          scale: 1
+          shift: 0
+    - id: conflicting-root
+      interventions:
+        - id: set-root-four-conflict
+          kind: do_set
+          target_tx_id: root
+          value: 4
+        - id: set-root-five-conflict
+          kind: do_set
+          target_tx_id: root
+          value: 5

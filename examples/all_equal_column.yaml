@@ -1,0 +1,15 @@
+format: MMLF
+version: "0.4"
+ledger_id: all-equal-column
+branches:
+  - {id: a, base: 3, operator: identity}
+  - {id: b, base: 3, operator: identity}
+  - {id: c, base: 4, operator: identity}
+layout:
+  - [a]
+  - [b]
+  - [c]
+constraints:
+  - {id: same-base, kind: all_equal, target: 3, scope: {type: column, index: 0}}
+traversals: {execute: dependency_topological}
+audit_policy: {local_required: true}

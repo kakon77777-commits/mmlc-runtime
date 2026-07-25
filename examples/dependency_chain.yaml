@@ -1,0 +1,20 @@
+format: MMLF
+version: "0.1"
+ledger_id: dependency-chain-preview
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - {id: t1, source_id: number-3, base: 3, operator: add, operand: 2, expected_result: 5}
+  - id: t2
+    source_id: number-3
+    base: 3
+    operator: multiply
+    operand: {ref: t1, field: result}
+    expected_result: 15
+  - id: t3
+    base: {ref: t2, field: result}
+    operator: subtract
+    operand: 4
+    expected_result: 11
+layout:
+  - [t1, t2, t3]

@@ -1,0 +1,40 @@
+format: MMLF
+version: "0.2"
+ledger_id: symbolic-exchange-e1
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - id: s1
+    source_id: number-3
+    base: 3
+    operator: add
+    operand: "expr:x"
+    expected_result: "expr:x + 3"
+    region: symbolic
+  - id: s2
+    base: {ref: s1, field: result}
+    operator: multiply
+    operand: "expr:y"
+    expected_result: "expr:y*(x + 3)"
+    region: symbolic
+  - id: s3
+    base: {ref: s2, field: result}
+    operator: subtract
+    operand: "expr:x*y"
+    expected_result: "expr:3*y"
+    region: symbolic
+  - id: s4
+    base: {ref: s3, field: result}
+    operator: divide
+    operand: "expr:y"
+    expected_result: 3
+    region: symbolic
+layout:
+  - [s1, s2, s3, s4]
+evaluation_scenarios:
+  - id: positive-integers
+    bindings: {x: 2, y: 5}
+  - id: signed-integers
+    bindings: {x: -4, y: 3}
+  - id: exact-fractions
+    bindings: {x: "frac:1/2", y: "frac:3/2"}

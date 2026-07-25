@@ -1,0 +1,41 @@
+format: MMLF
+version: "0.8"
+ledger_id: fdcs-observation-impossible
+branches:
+  - id: seed
+    base: 2
+    operator: identity
+    expected_result: 2
+  - id: root
+    base: {ref: seed, field: result}
+    operator: add
+    operand: 1
+    expected_result: 3
+  - id: leaf
+    base: {ref: root, field: result}
+    operator: multiply
+    operand: 2
+    expected_result: 6
+layout:
+  - [seed, root, leaf]
+fdcs:
+  enabled: true
+  base_context: observed
+  observed_transactions: [leaf]
+  observation_planning:
+    enabled: true
+    candidate_transactions: [seed, root]
+    max_additional_observations: 2
+  contexts:
+    - id: hard-root-four
+      interventions:
+        - id: set-root-four
+          kind: do_set
+          target_tx_id: root
+          value: 4
+    - id: soft-root-plus-one
+      interventions:
+        - id: shift-root-one
+          kind: soft_shift
+          target_tx_id: root
+          shift: 1

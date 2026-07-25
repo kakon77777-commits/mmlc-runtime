@@ -1,0 +1,65 @@
+format: MMLF
+version: "0.8"
+ledger_id: fdcs-probability-policy
+branches:
+  - id: outcome
+    base: 0
+    operator: identity
+    expected_result: 0
+layout:
+  - [outcome]
+fdcs:
+  enabled: true
+  base_context: observed
+  parallel_workers: 4
+  probability_model:
+    tolerance: 1.0e-12
+  policy_selection:
+    enabled: true
+    risk_aversion: 0.2
+    cost_weight: 1.0
+    objectives:
+      - tx_id: outcome
+        direction: maximize
+        weight: 1.0
+  contexts:
+    - id: policy-a-low
+      policy_id: policy-a
+      scenario_id: low
+      probability: 0.6
+      cost: 2.0
+      interventions:
+        - id: a-low-outcome
+          kind: do_set
+          target_tx_id: outcome
+          value: 8
+    - id: policy-a-high
+      policy_id: policy-a
+      scenario_id: high
+      probability: 0.4
+      cost: 2.0
+      interventions:
+        - id: a-high-outcome
+          kind: do_set
+          target_tx_id: outcome
+          value: 14
+    - id: policy-b-low
+      policy_id: policy-b
+      scenario_id: low
+      probability: 0.5
+      cost: 0.5
+      interventions:
+        - id: b-low-outcome
+          kind: do_set
+          target_tx_id: outcome
+          value: 5
+    - id: policy-b-high
+      policy_id: policy-b
+      scenario_id: high
+      probability: 0.5
+      cost: 0.5
+      interventions:
+        - id: b-high-outcome
+          kind: do_set
+          target_tx_id: outcome
+          value: 13

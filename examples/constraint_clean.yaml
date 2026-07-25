@@ -1,0 +1,18 @@
+format: MMLF
+version: "0.4"
+ledger_id: constraint-clean
+branches:
+  - {id: a, base: 1, operator: identity}
+  - {id: b, base: 2, operator: identity}
+  - {id: c, base: 3, operator: identity}
+  - {id: d, base: 4, operator: identity}
+layout:
+  - [a, b]
+  - [c, d]
+constraints:
+  - {id: row-0, kind: sum_equals, target: 3, scope: {type: row, index: 0}}
+  - {id: row-1, kind: sum_equals, target: 7, scope: {type: row, index: 1}}
+  - {id: column-0, kind: sum_equals, target: 4, scope: {type: column, index: 0}}
+  - {id: column-1, kind: sum_equals, target: 6, scope: {type: column, index: 1}}
+traversals: {execute: dependency_topological}
+audit_policy: {local_required: true, signed_global_cancellation_allowed: false}

@@ -1,0 +1,21 @@
+{
+  "repository_name": "mmlc-runtime",
+  "owner": "kakon77777-commits",
+  "display_name": "MMLC Runtime — Multidirectional Matrix Ledger Computation",
+  "description": "Auditable multidirectional matrix-ledger runtime for deterministic computation, constraints, temporal dynamics, counterfactuals, uncertainty, and finite decision analysis.",
+  "default_branch": "main",
+  "release_tag": "v1.0.0",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/kakon77777-commits/mmlc-runtime",
+  "topics": [
+    "matrix-computation",
+    "ledger",
+    "audit",
+    "counterfactual",
+    "causal-inference",
+    "symbolic-computation",
+    "uncertainty",
+    "decision-analysis",
+    "python"
+  ]
+}

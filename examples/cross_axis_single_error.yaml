@@ -1,0 +1,30 @@
+format: MMLF
+version: "0.4"
+ledger_id: cross-axis-single-error
+branches:
+  - {id: r0c0, base: 1, operator: identity}
+  - {id: r0c1, base: 2, operator: identity}
+  - {id: r0c2, base: 3, operator: identity}
+  - {id: r1c0, base: 4, operator: identity}
+  - {id: r1c1, base: 8, operator: identity}
+  - {id: r1c2, base: 6, operator: identity}
+  - {id: r2c0, base: 7, operator: identity}
+  - {id: r2c1, base: 8, operator: identity}
+  - {id: r2c2, base: 9, operator: identity}
+layout:
+  - [r0c0, r0c1, r0c2]
+  - [r1c0, r1c1, r1c2]
+  - [r2c0, r2c1, r2c2]
+constraints:
+  - {id: row-0, kind: sum_equals, target: 6, scope: {type: row, index: 0}}
+  - {id: row-1, kind: sum_equals, target: 15, scope: {type: row, index: 1}}
+  - {id: row-2, kind: sum_equals, target: 24, scope: {type: row, index: 2}}
+  - {id: column-0, kind: sum_equals, target: 12, scope: {type: column, index: 0}}
+  - {id: column-1, kind: sum_equals, target: 15, scope: {type: column, index: 1}}
+  - {id: column-2, kind: sum_equals, target: 18, scope: {type: column, index: 2}}
+traversals:
+  execute: dependency_topological
+  display: [left_to_right, top_to_bottom]
+audit_policy:
+  local_required: true
+  signed_global_cancellation_allowed: false

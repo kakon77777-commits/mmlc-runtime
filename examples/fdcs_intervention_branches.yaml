@@ -1,0 +1,58 @@
+format: MMLF
+version: "0.6"
+ledger_id: fdcs-intervention-branches
+branches:
+  - id: seed
+    base: 2
+    operator: identity
+    expected_result: 2
+    context: {fractal_level: 0}
+  - id: root
+    base: {ref: seed, field: result}
+    operator: add
+    operand: 1
+    expected_result: 3
+    context: {fractal_level: 0, causal_weight: 1.0}
+  - id: mid
+    base: {ref: root, field: result}
+    operator: multiply
+    operand: 2
+    expected_result: 6
+    context: {fractal_level: 1, causal_weight: 1.2}
+  - id: leaf
+    base: {ref: mid, field: result}
+    operator: add
+    operand: 4
+    expected_result: 10
+    context: {fractal_level: 2, causal_weight: 0.8}
+layout:
+  - [seed, root, mid, leaf]
+traversals:
+  execute: dependency_topological
+fdcs:
+  enabled: true
+  base_context: observed
+  decay_lambda: 0.9
+  fractal_decay_lambda: 0.8
+  direction_weights: {forward: 1.0, reverse: 0.25}
+  parallel_workers: 3
+  contexts:
+    - id: do-root-10
+      modulation: 1.0
+      interventions:
+        - id: set-root-10
+          kind: do_set
+          target_tx_id: root
+          value: 10
+          reason: test root intervention
+    - id: do-mid-1
+      modulation: 1.0
+      interventions:
+        - id: set-mid-1
+          kind: do_set
+          target_tx_id: mid
+          value: 1
+          reason: test middle intervention
+    - id: high-weight
+      modulation: 2.0
+      interventions: []

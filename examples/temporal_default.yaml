@@ -1,0 +1,13 @@
+format: MMLF
+version: "0.5"
+ledger_id: temporal-default
+branches:
+  - id: x-t0
+    series_id: X
+    time_index: 0
+    base: {temporal_ref: X, lag: 1, default: 4}
+    operator: add
+    operand: 1
+    expected_result: 5
+layout:
+  - [x-t0]

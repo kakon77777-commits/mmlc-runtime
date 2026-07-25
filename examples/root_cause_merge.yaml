@@ -1,0 +1,14 @@
+format: MMLF
+version: "0.2"
+ledger_id: root-cause-merge-e2
+branches:
+  - {id: root-a, base: 3, operator: add, operand: 2, expected_result: 6, region: roots}
+  - {id: root-b, base: 10, operator: subtract, operand: 2, expected_result: 9, region: roots}
+  - id: merge
+    base: {ref: root-a, field: audited_result}
+    operator: add
+    operand: {ref: root-b, field: audited_result}
+    expected_result: 15
+    region: downstream
+layout:
+  - [root-a, root-b, merge]

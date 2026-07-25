@@ -1,0 +1,158 @@
+format: MMLF
+version: "0.9"
+ledger_id: fdcs-sequential-information-value
+branches:
+  - {id: signal_a, base: 0, operator: identity, expected_result: 0}
+  - {id: signal_b, base: 0, operator: identity, expected_result: 0}
+  - {id: outcome, base: 0, operator: identity, expected_result: 0}
+layout:
+  - [signal_a, signal_b, outcome]
+fdcs:
+  enabled: true
+  base_context: observed
+  parallel_workers: 8
+  probability_model:
+    tolerance: 1.0e-12
+  policy_selection:
+    enabled: true
+    risk_aversion: 0.0
+    cost_weight: 0.0
+    objectives:
+      - {tx_id: outcome, direction: maximize, weight: 1.0}
+  information_value:
+    enabled: true
+    horizon: 2
+    max_horizon: 3
+    candidate_transactions: [signal_a, signal_b]
+    observation_costs:
+      signal_a: 0.5
+      signal_b: 0.5
+  contexts:
+    - id: policy-0-state-0
+      policy_id: policy-0
+      scenario_id: state-0
+      probability: 0.25
+      interventions:
+        - {id: policy-0-state-0-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-0-state-0-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-0-state-0-outcome, kind: do_set, target_tx_id: outcome, value: 12}
+    - id: policy-0-state-1
+      policy_id: policy-0
+      scenario_id: state-1
+      probability: 0.25
+      interventions:
+        - {id: policy-0-state-1-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-0-state-1-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-0-state-1-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-0-state-2
+      policy_id: policy-0
+      scenario_id: state-2
+      probability: 0.25
+      interventions:
+        - {id: policy-0-state-2-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-0-state-2-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-0-state-2-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-0-state-3
+      policy_id: policy-0
+      scenario_id: state-3
+      probability: 0.25
+      interventions:
+        - {id: policy-0-state-3-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-0-state-3-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-0-state-3-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-1-state-0
+      policy_id: policy-1
+      scenario_id: state-0
+      probability: 0.25
+      interventions:
+        - {id: policy-1-state-0-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-1-state-0-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-1-state-0-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-1-state-1
+      policy_id: policy-1
+      scenario_id: state-1
+      probability: 0.25
+      interventions:
+        - {id: policy-1-state-1-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-1-state-1-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-1-state-1-outcome, kind: do_set, target_tx_id: outcome, value: 12}
+    - id: policy-1-state-2
+      policy_id: policy-1
+      scenario_id: state-2
+      probability: 0.25
+      interventions:
+        - {id: policy-1-state-2-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-1-state-2-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-1-state-2-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-1-state-3
+      policy_id: policy-1
+      scenario_id: state-3
+      probability: 0.25
+      interventions:
+        - {id: policy-1-state-3-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-1-state-3-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-1-state-3-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-2-state-0
+      policy_id: policy-2
+      scenario_id: state-0
+      probability: 0.25
+      interventions:
+        - {id: policy-2-state-0-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-2-state-0-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-2-state-0-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-2-state-1
+      policy_id: policy-2
+      scenario_id: state-1
+      probability: 0.25
+      interventions:
+        - {id: policy-2-state-1-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-2-state-1-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-2-state-1-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-2-state-2
+      policy_id: policy-2
+      scenario_id: state-2
+      probability: 0.25
+      interventions:
+        - {id: policy-2-state-2-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-2-state-2-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-2-state-2-outcome, kind: do_set, target_tx_id: outcome, value: 12}
+    - id: policy-2-state-3
+      policy_id: policy-2
+      scenario_id: state-3
+      probability: 0.25
+      interventions:
+        - {id: policy-2-state-3-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-2-state-3-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-2-state-3-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-3-state-0
+      policy_id: policy-3
+      scenario_id: state-0
+      probability: 0.25
+      interventions:
+        - {id: policy-3-state-0-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-3-state-0-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-3-state-0-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-3-state-1
+      policy_id: policy-3
+      scenario_id: state-1
+      probability: 0.25
+      interventions:
+        - {id: policy-3-state-1-a, kind: do_set, target_tx_id: signal_a, value: 0}
+        - {id: policy-3-state-1-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-3-state-1-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-3-state-2
+      policy_id: policy-3
+      scenario_id: state-2
+      probability: 0.25
+      interventions:
+        - {id: policy-3-state-2-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-3-state-2-b, kind: do_set, target_tx_id: signal_b, value: 0}
+        - {id: policy-3-state-2-outcome, kind: do_set, target_tx_id: outcome, value: 0}
+    - id: policy-3-state-3
+      policy_id: policy-3
+      scenario_id: state-3
+      probability: 0.25
+      interventions:
+        - {id: policy-3-state-3-a, kind: do_set, target_tx_id: signal_a, value: 1}
+        - {id: policy-3-state-3-b, kind: do_set, target_tx_id: signal_b, value: 1}
+        - {id: policy-3-state-3-outcome, kind: do_set, target_tx_id: outcome, value: 12}

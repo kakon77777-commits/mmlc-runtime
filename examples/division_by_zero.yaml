@@ -1,0 +1,7 @@
+format: MMLF
+version: "0.1"
+ledger_id: division-zero
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - {id: b-div-zero, source_id: number-3, base: 3, operator: divide, operand: 0}

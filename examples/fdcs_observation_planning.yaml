@@ -1,0 +1,47 @@
+format: MMLF
+version: "0.8"
+ledger_id: fdcs-observation-planning
+branches:
+  - id: seed
+    base: 2
+    operator: identity
+    expected_result: 2
+  - id: root
+    base: {ref: seed, field: result}
+    operator: add
+    operand: 1
+    expected_result: 3
+  - id: mid
+    base: {ref: root, field: result}
+    operator: multiply
+    operand: 2
+    expected_result: 6
+  - id: leaf
+    base: {ref: mid, field: result}
+    operator: identity
+    expected_result: 6
+layout:
+  - [seed, root, mid, leaf]
+fdcs:
+  enabled: true
+  base_context: observed
+  observed_transactions: [leaf]
+  parallel_workers: 2
+  observation_planning:
+    enabled: true
+    candidate_transactions: [seed, root, mid]
+    max_additional_observations: 2
+    max_solutions: 8
+  contexts:
+    - id: intervene-root
+      interventions:
+        - id: set-root-four
+          kind: do_set
+          target_tx_id: root
+          value: 4
+    - id: intervene-mid
+      interventions:
+        - id: set-mid-eight
+          kind: do_set
+          target_tx_id: mid
+          value: 8

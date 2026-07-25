@@ -1,0 +1,125 @@
+{
+  "benchmark_format": "MMLC-RELEASE-BENCHMARK v1",
+  "runtime_version": "1.0.0",
+  "python": "3.13.5 (main, May  5 2026, 21:05:52) [GCC 14.2.0]",
+  "platform": "Linux-6.12.13-x86_64-with-glibc2.41",
+  "processor": "",
+  "sizes": [
+    64,
+    256,
+    1024
+  ],
+  "repeats": 3,
+  "cases": [
+    {
+      "name": "independent",
+      "size": 64,
+      "repeats": 3,
+      "durations_seconds": [
+        0.028004287999920052,
+        0.02774099699990984,
+        0.027360061000308633
+      ],
+      "median_seconds": 0.02774099699990984,
+      "min_seconds": 0.027360061000308633,
+      "max_seconds": 0.028004287999920052,
+      "throughput_per_second": 2307.0547897109827,
+      "peak_memory_bytes": 614231,
+      "deterministic_hash": "56bc1c40488094733398bbfe313d5ae6a23d06f9ee5abe80b7f06a3ae5c8cbb8",
+      "hashes_identical": true,
+      "global_status": "PASS"
+    },
+    {
+      "name": "dependency_chain",
+      "size": 64,
+      "repeats": 3,
+      "durations_seconds": [
+        0.03016426499971203,
+        0.030274968999947305,
+        0.029894314000102895
+      ],
+      "median_seconds": 0.03016426499971203,
+      "min_seconds": 0.029894314000102895,
+      "max_seconds": 0.030274968999947305,
+      "throughput_per_second": 2121.7158780633636,
+      "peak_memory_bytes": 695943,
+      "deterministic_hash": "afa72faef0a06c99a71498b05dfc80e255b77c05e36045c8899a7c78bcf250de",
+      "hashes_identical": true,
+      "global_status": "PASS"
+    },
+    {
+      "name": "independent",
+      "size": 256,
+      "repeats": 3,
+      "durations_seconds": [
+        0.10682564299986552,
+        0.10886773499987612,
+        0.11040138199996363
+      ],
+      "median_seconds": 0.10886773499987612,
+      "min_seconds": 0.10682564299986552,
+      "max_seconds": 0.11040138199996363,
+      "throughput_per_second": 2351.4772306073173,
+      "peak_memory_bytes": 2439227,
+      "deterministic_hash": "4f8d0932a78a8acac6a0e015bc67028ee7f0df872e8d6b6c6ccb871d3617afc0",
+      "hashes_identical": true,
+      "global_status": "PASS"
+    },
+    {
+      "name": "dependency_chain",
+      "size": 256,
+      "repeats": 3,
+      "durations_seconds": [
+        0.11926378999987719,
+        0.12352867099980358,
+        0.12657044800016592
+      ],
+      "median_seconds": 0.12352867099980358,
+      "min_seconds": 0.11926378999987719,
+      "max_seconds": 0.12657044800016592,
+      "throughput_per_second": 2072.393379836549,
+      "peak_memory_bytes": 2864521,
+      "deterministic_hash": "50ef2c8418b429b1e76d7e1f7222b207fa0a354118a0cfd73fabcd779cabd727",
+      "hashes_identical": true,
+      "global_status": "PASS"
+    },
+    {
+      "name": "independent",
+      "size": 1024,
+      "repeats": 3,
+      "durations_seconds": [
+        0.5996682219997638,
+        0.48691447700002755,
+        0.4819268319997718
+      ],
+      "median_seconds": 0.48691447700002755,
+      "min_seconds": 0.4819268319997718,
+      "max_seconds": 0.5996682219997638,
+      "throughput_per_second": 2103.0387231635796,
+      "peak_memory_bytes": 10058055,
+      "deterministic_hash": "76d78a209927bde7494a909a612f4dbcf8abbc52157670c040a8a14250e9ac83",
+      "hashes_identical": true,
+      "global_status": "PASS"
+    },
+    {
+      "name": "dependency_chain",
+      "size": 1024,
+      "repeats": 3,
+      "durations_seconds": [
+        0.5385691589999624,
+        0.7644357750000381,
+        0.6565547750001315
+      ],
+      "median_seconds": 0.6565547750001315,
+      "min_seconds": 0.5385691589999624,
+      "max_seconds": 0.7644357750000381,
+      "throughput_per_second": 1559.6566181394307,
+      "peak_memory_bytes": 11722418,
+      "deterministic_hash": "c2fa883ba1e5b01a7375b6a11c668f9172159cae7aa37a2fcc2332ad675ca3be",
+      "hashes_identical": true,
+      "global_status": "PASS"
+    }
+  ],
+  "interpretation": "Single-machine implementation measurements only; no comparison or superiority claim. tracemalloc is enabled and affects absolute timing.",
+  "benchmark_hash": "4982fb03e149bd2b69db2acdc3f8d4e821eb64e37f18d9397672b6b1737ad9f7"
+}

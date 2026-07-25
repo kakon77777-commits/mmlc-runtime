@@ -1,0 +1,18 @@
+format: MMLF
+version: "0.6"
+ledger_id: fdcs-invalid-intervention
+branches:
+  - id: a
+    base: 1
+    operator: identity
+layout:
+  - [a]
+fdcs:
+  enabled: true
+  contexts:
+    - id: invalid
+      interventions:
+        - id: bad
+          kind: do_set
+          target_tx_id: missing
+          value: 2

@@ -1,0 +1,13 @@
+format: MMLF
+version: "0.4"
+ledger_id: ambiguous-row-repair
+branches:
+  - {id: a, base: 4, operator: identity}
+  - {id: b, base: 2, operator: identity}
+  - {id: c, base: 3, operator: identity}
+layout:
+  - [a, b, c]
+constraints:
+  - {id: row-total, kind: sum_equals, target: 6, scope: {type: row, index: 0}}
+traversals: {execute: dependency_topological}
+audit_policy: {local_required: true, signed_global_cancellation_allowed: false}

@@ -1,0 +1,12 @@
+format: MMLF
+version: "0.1"
+ledger_id: anti-cancellation
+objects:
+  - {id: number-3, type: real, value: 3}
+branches:
+  - {id: plus-error, source_id: number-3, base: 3, operator: add, operand: 2, expected_result: 6}
+  - {id: minus-error, source_id: number-3, base: 3, operator: add, operand: 2, expected_result: 4}
+audit_policy:
+  local_required: true
+  signed_global_cancellation_allowed: false
+  numeric_tolerance: 1.0e-12
